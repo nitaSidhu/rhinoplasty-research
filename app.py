@@ -2,6 +2,7 @@ import hashlib
 import json
 import os
 from datetime import date
+from urllib.parse import quote
 
 import streamlit as st
 
@@ -235,7 +236,7 @@ def card(s, ctx):
 
         with st.expander("Reviews"):
             if not s["reviews"]:
-                st.markdown("❓ No reviews found.")
+                st.markdown("❓ No reviews found in the pages this search could read. Google Maps ratings usually can't be read automatically, so check them yourself.")
             ratings = [r for r in s["reviews"] if r["report_type"] == "rating_summary"]
             reports = [r for r in s["reviews"] if r["report_type"] == "patient_report"]
             for subj in ("surgeon", "clinic", "unspecified"):
